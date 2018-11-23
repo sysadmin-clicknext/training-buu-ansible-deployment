@@ -97,6 +97,12 @@
     unarchive: 
       src: "/tmp/lastest.tar.gz"
       dest: "/tmp"
+
+  - name: Dowload template wp-config.php
+    sudo: true
+    get_url:
+      url: "http://27.254.137.88/files/buu/wp-config"
+      dest: "/tmp/wp-config.php.j2"
   
   - name: Sync wordpress contents to virtualhost
     sudo: true
