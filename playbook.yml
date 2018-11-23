@@ -1,0 +1,128 @@
+- hosts: local
+  tasks:
+  - name: include variables files
+    include_vars: variables.yml
+
+  - name: apt-get update
+    sudo: true
+    apt:
+      update_cache: yes
+
+  - name: intall apache2 
+    sudo: true
+    apt:
+      name: apache2
+      state: present
+
+  - name: Disable default apache2 site.
+    command: sudo a2dissite 000-default.conf
+
+  - name: Download template virtualhost
+    sudo: true
+    get_url:
+      url: "http://27.254.137.88/files/buu/vhost.conf.j2"
+      dest: "/etc/ansible/{{ your_domain_names }}.conf.j2"
+
+  - name: Copy template for virtualhost
+    sudo: true
+    template:
+     src: "/etc/ansible/{{ your_domain_names }}.conf.j2"
+     dest: "/etc/apache2/sites-available/{{ your_domain_names }}.conf"
+
+  - name: Enable your virtualhost.
+    command: sudo a2ensite {{ your_domain_names }}.conf
+
+  - name: Create DocumentRoot for your site.
+    sudo: true
+    file:
+      path: "/var/www/{{ your_domain_names }}"
+      state: directory
+
+  - name: Install mariadb-server
+    sudo: true
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - mariadb-server
+      - python-mysqldb
+
+  - name: Create a new database.
+    sudo: true
+    mysql_db:
+      name: "wordpress_db"
+      state: present
+
+  - name: Create User database.
+    sudo: true
+    mysql_user:
+      name: "wordpress_user"
+      password: "123456"
+      priv: 'wordpress_db.*:ALL'
+      state: present
+
+  - name: Install php7.0
+    sudo: true
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - php-common
+      - php7.0
+      - php7.0-cli
+      - php7.0-common
+      - php7.0-fpm
+      - php7.0-json
+      - php7.0-opcache
+      - php7.0-readline
+      - libapache2-mod-php7.0
+      - php7.0-mysql
+      - php7.0-curl
+      - php7.0-mbstring
+      - php7.0-gd
+      - php7.0-xml
+      - php7.0-xmlrpc
+      - php7.0-intl
+      - php7.0-soap
+      - php7.0-zip
+
+  - name: Dowload wordpress
+    sudo: true
+    get_url:
+      url: "https://wordpress.org/latest.tar.gz"
+      dest: "/tmp/lastest.tar.gz"
+
+  - name: Extract archive wordpress
+    sudo: true
+    unarchive: 
+      src: "/tmp/lastest.tar.gz"
+      dest: "/tmp"
+
+  - name: Dowload template wp-config.php
+    sudo: true
+    get_url:
+      url: "http://27.254.137.88/files/buu/wp-config"
+      dest: "/tmp/wp-config.php.j2"
+  
+  - name: Sync wordpress contents to virtualhost
+    synchronize:
+     src: "/tmp/wordpress/"
+     dest: "/var/www/{{ your_domain_names }}/"
+
+  - name: Copy template new wp-config.php to virtualhost
+    sudo: true
+    template:
+     src: "/tmp/wp-config.php.j2"
+     dest: "/var/www/{{ your_domain_names }}/wp-config.php"
+
+  - name: Service apache2 restart
+    sudo: true
+    service:
+      name: apache2
+      state: restarted
+    
+  - name: Service mariadb restart
+    sudo: true
+    service:
+      name: mysql
+      state: restarted
