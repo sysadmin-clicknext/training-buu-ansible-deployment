@@ -17,21 +17,25 @@ $ cd $Home && sudo git clone https://github.com/sysadmin-clicknext/training-buu-
 $ ansible-playbook -i hosts playbook.yml
 ```
 
-##### Variables.yml
+### Variables
 
 ###### Define your name of DomainName
 ```
 your_domain_names: ""
 ```
-###### Define name of user database.
+###### Define your name of DomainName
 ```
-db_user: ""
+your_domain_names: ""
 ```
 ###### Define name of database.
 ```
-db_name: ""
+wordpress_db_name: ""
+```
+###### Define username of database.
+```
+wordpress_user_name: ""
 ```
 ###### Define password of database.
 ```
-db_pass: ""
+wordpress_user_pass: ""
 ```

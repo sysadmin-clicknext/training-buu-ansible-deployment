@@ -50,18 +50,18 @@
   - name: Create a new database.
     sudo: true
     mysql_db:
-      name: "wordpress_db"
+      name: "{{ wordpress_db_name }}"
       state: present
 
   - name: Create User database.
     sudo: true
     mysql_user:
-      name: "wordpress_user"
-      password: "123456"
-      priv: 'wordpress_db.*:ALL'
+      name: "{{ wordpress_user_name }}"
+      password: "{{ wordpress_user_pass }}"
+      priv: '{{ wordpress_db_name }}.*:ALL'
       state: present
 
-  - name: Install php7.0
+  - name: Install php-7.0
     sudo: true
     apt:
       name: "{{ packages }}"
@@ -97,21 +97,12 @@
     unarchive: 
       src: "/tmp/lastest.tar.gz"
       dest: "/tmp"
-
-  - name: Dowload template wp-config.php
-    sudo: true
-    get_url:
-      url: "http://27.254.137.88/files/buu/wp-config"
-      dest: "/tmp/wp-config.php.j2"
- 
+  
   - name: Sync wordpress contents to virtualhost
     sudo: true
     synchronize:
      src: "/tmp/wordpress/"
      dest: "/var/www/{{ your_domain_names }}/"
-     owner: "root"
-     groups: "root"
-     mod: 0755
 
   - name: Copy template new wp-config.php to virtualhost
     sudo: true

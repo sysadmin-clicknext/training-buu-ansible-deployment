@@ -1,14 +1,14 @@
 # Define your name of DomainName
 your_domain_names: ""
 
-# Define name of user database.
-db_user: ""
-
 # Define name of database.
-db_name: ""
+wordpress_db_name: ""
+
+# Define username of database.
+wordpress_user_name: ""
 
 # Define password of database.
-db_pass: ""
+wordpress_user_pass: ""
 
 # Wordpress download link
 wordpress_link: "https://wordpress.org/latest.tar.gz"
