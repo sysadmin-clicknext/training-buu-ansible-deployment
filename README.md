@@ -8,9 +8,9 @@ $ sudo apt update -y && sudo apt dist-upgrade -y
 ```
 $ sudo apt install ansible -y
 ```
-##### 3). Go to in your ansible path and Git clone lampW stack to your Servers.
+##### 3). Go to $HOME path and Git clone lampW stack to your Servers.
 ```
-$ cd /etc/ansible/ && sudo git clone https://github.com/sysadmin-clicknext/training-buu-ansible-deployment.git
+$ cd $home && sudo git clone https://github.com/sysadmin-clicknext/training-buu-ansible-deployment.git
 ```
 
 
