@@ -8,11 +8,30 @@ $ sudo apt update -y && sudo apt dist-upgrade -y
 ```
 $ sudo apt install ansible -y
 ```
-##### 3). Go to $HOME path and Git clone lampW stack to your Servers.
+##### 3). Go to your $HOME and Git clone lampW stack to your Servers.
 ```
 $ cd $Home && sudo git clone https://github.com/sysadmin-clicknext/training-buu-ansible-deployment.git
 ```
 ##### Example ansible playbook deployment (Must on ansible Directory path)
 ```
 $ ansible-playbook -i hosts playbook.yml
+```
+
+##### Variables.yml
+
+###### Define your name of DomainName
+```
+your_domain_names: ""
+```
+###### Define name of user database.
+```
+db_user: ""
+```
+###### Define name of database.
+```
+db_name: ""
+```
+###### Define password of database.
+```
+db_pass: ""
 ```
