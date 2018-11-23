@@ -103,10 +103,11 @@
     get_url:
       url: "http://27.254.137.88/files/buu/wp-config"
       dest: "/tmp/wp-config.php.j2"
-  
+ 
   - name: Sync wordpress contents to virtualhost
+    sudo: true
     synchronize:
-     src: "/tmp/wordpress/"
+     src: "/tmp/wordpress"
      dest: "/var/www/{{ your_domain_names }}/"
 
   - name: Copy template new wp-config.php to virtualhost

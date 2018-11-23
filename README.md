@@ -10,7 +10,11 @@ $ sudo apt install ansible -y
 ```
 ##### 3). Go to $HOME path and Git clone lampW stack to your Servers.
 ```
-$ cd $home && sudo git clone https://github.com/sysadmin-clicknext/training-buu-ansible-deployment.git
+$ cd $Home && sudo git clone https://github.com/sysadmin-clicknext/training-buu-ansible-deployment.git
 ```
 
+##### Example ansible playbook deployment (Must on ansible Directory path)
+```
+$ ansible-playbook -i hosts playbook.yml
+```
 
