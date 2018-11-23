@@ -1,15 +1,16 @@
 ### Deploy LAMP Stack and Wordpress with Ansible playbook on Ubuntu 16.04 (AWS Cloud)
 
-##### First Step). Update and Upgrade distro following command: (Select : Packages Maintainer Version )
+##### 1). Update and Upgrade distro following command: (Select : Packages Maintainer Version )
 ```
 $ sudo apt update -y && sudo apt dist-upgrade -y
 ```
-##### Second Step). Install ansible playbook.
+##### 2). Install ansible playbook.
 ```
 $ sudo apt install ansible -y
 ```
-##### Third Step). Git clone lampW stack to your Servers.
+##### 3). Go to in your ansible path and Git clone lampW stack to your Servers.
 ```
-$ sudo git clone 
+$ cd /etc/ansible/ && sudo git clone https://github.com/sysadmin-clicknext/training-buu-ansible-deployment.git
 ```
+
 
