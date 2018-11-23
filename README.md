@@ -12,9 +12,7 @@ $ sudo apt install ansible -y
 ```
 $ cd $Home && sudo git clone https://github.com/sysadmin-clicknext/training-buu-ansible-deployment.git
 ```
-
 ##### Example ansible playbook deployment (Must on ansible Directory path)
 ```
 $ ansible-playbook -i hosts playbook.yml
 ```
-

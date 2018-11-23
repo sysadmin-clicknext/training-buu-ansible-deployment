@@ -4,11 +4,11 @@ your_domain_names: ""
 # Wordpress download link
 wordpress_link: "https://wordpress.org/latest.tar.gz"
 
-# Name of user database.
+# Define name of user database.
 db_user: ""
 
-# Name of database.
+# Define name of database.
 db_name: ""
 
-# Password of database.
+# Define password of database.
 db_pass: ""
