@@ -1,4 +1,4 @@
-### Deploy LAMP Stack and Wordpress with Ansible playbook on Ubuntu 16.04 (AWS)
+### Deploy LAMP Stack and Wordpress with Ansible playbook on Ubuntu 16.04 (AWS Cloud)
 
 ##### First Step). Update and Upgrade distro following command: (Select : Packages Maintainer Version )
 ```
