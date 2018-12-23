@@ -1,0 +1,5 @@
+$ mkdir wordpress-playbook
+$ cd wordpress-playbook
+$ mkdir roles
+$ touch hosts 
+$ touch playbook.yml
